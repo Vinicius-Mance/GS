@@ -27,6 +27,14 @@ public class Controller {
         return acoes.findAll();
     }
 
+    // Apagar usuário por id
+    @RequestMapping(value = "/apagarusuario/{id}", method = RequestMethod.GET)
+    public @ResponseBody void apagarUsuario(@PathVariable int id){
+        acoes.delete(acoes.findById(id));
+    }
+
+
+
     // Cadastrar usuarios
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public @ResponseBody
