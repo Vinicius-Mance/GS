@@ -4,12 +4,17 @@ import br.com.beans.Usuario;
 import br.com.repository.UsuarioRepositorio;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
 public class Controller {
+
+//    @RequestMapping(value = "/teste", method = RequestMethod.GET)
+//    public @ResponseBody
+//    String teste(){
+//        return "ok";
+//    }
 
     // Ações
     @Autowired
@@ -30,8 +35,8 @@ public class Controller {
     }
 
     // Pegar usuario por id
-    @RequestMapping(value = "/listarusuario/{id}", @PathVariable('id') method = RequestMethod.GET)
-    public @ResponseBody Usuario listarUsuario(){
+    @RequestMapping(value = "/listarusuario/{id}", method = RequestMethod.GET)
+    public @ResponseBody Usuario listarUsuario(@PathVariable int id){
         return acoes.findById(id);
     }
 

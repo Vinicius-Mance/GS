@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer>{
 
-    //Listar todos os ususarios
+    //Listar todos os usuarios
     List<Usuario> findAll();
 
     //Pesquisar por id
