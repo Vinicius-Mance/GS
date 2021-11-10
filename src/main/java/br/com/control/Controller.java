@@ -2,6 +2,7 @@ package br.com.control;
 
 import br.com.beans.Usuario;
 import br.com.repository.UsuarioRepositorio;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
@@ -21,11 +22,20 @@ public class Controller {
         return acoes.findAll();
     }
 
+//    // Logout
+//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+//    public @ResponseBody
+//    void logout() {
+//
+//    }
+
     // Apagar usuário por id
+    @Cacheable
     @RequestMapping(value = "/apagar/{id}", method = RequestMethod.GET)
     public @ResponseBody void apagarUsuario(@PathVariable int id){
         acoes.delete(acoes.findById(id));
     }
+
 
     // Cadastrar usuarios
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
@@ -39,6 +49,7 @@ public class Controller {
     public @ResponseBody Usuario listarUsuario(@PathVariable int id){
         return acoes.findById(id);
     }
+
 
 
 }
