@@ -10,12 +10,6 @@ import java.util.List;
 @RequestMapping("/usuarios")
 public class Controller {
 
-//    @RequestMapping(value = "/teste", method = RequestMethod.GET)
-//    public @ResponseBody
-//    String teste(){
-//        return "ok";
-//    }
-
     // Ações
     @Autowired
     private UsuarioRepositorio acoes;
@@ -28,12 +22,10 @@ public class Controller {
     }
 
     // Apagar usuário por id
-    @RequestMapping(value = "/apagarusuario/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/apagar/{id}", method = RequestMethod.GET)
     public @ResponseBody void apagarUsuario(@PathVariable int id){
         acoes.delete(acoes.findById(id));
     }
-
-
 
     // Cadastrar usuarios
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
@@ -43,9 +35,10 @@ public class Controller {
     }
 
     // Pegar usuario por id
-    @RequestMapping(value = "/listarusuario/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/listar/{id}", method = RequestMethod.GET)
     public @ResponseBody Usuario listarUsuario(@PathVariable int id){
         return acoes.findById(id);
     }
 
+    
 }
