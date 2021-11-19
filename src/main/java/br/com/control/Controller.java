@@ -2,14 +2,10 @@ package br.com.control;
 
 import br.com.beans.Usuario;
 import br.com.repository.UsuarioRepositorio;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController
@@ -42,10 +38,15 @@ public class Controller {
     }
 
     // Pegar usuario por id
-//    @Cacheable
+    @Cacheable("/listar/{id}")
     @RequestMapping(value = "/listar/{id}", method = RequestMethod.GET)
     public @ResponseBody Usuario listarUsuario(@PathVariable int id){
         return acoes.findById(id);
     }
 
+    @CacheEvict(value="limpar")
+    @RequestMapping(value = "/limpar", method = RequestMethod.GET)
+    public @ResponseBody void limparCache(){
+
+    }
 }
