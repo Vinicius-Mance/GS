@@ -42,7 +42,7 @@ public class Controller {
     }
 
     // Pegar usuario por id
-    @Cacheable
+//    @Cacheable
     @RequestMapping(value = "/listar/{id}", method = RequestMethod.GET)
     public @ResponseBody Usuario listarUsuario(@PathVariable int id){
         return acoes.findById(id);
